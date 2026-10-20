@@ -1,0 +1,23 @@
+/* The garden begins empty. Growth is rooted in fixed SVG coordinates. */
+.garden-stage .garden-touch-hint{transition:top .5s,opacity .5s;max-width:90%;line-height:1.6}
+.garden-stage:not(.has-flowers) .garden-touch-hint{top:40%;font-size:22px;color:#9b9e7d;transform:none}
+.garden-stage.has-flowers .garden-touch-hint{top:24px;font-size:16px;opacity:.75}
+.garden-stage .garden-flower{animation:none;opacity:1;translate:none;transform:none}
+.garden-stage .garden-flower .lily-sway{animation:lily-breeze 6s 4.2s ease-in-out infinite alternate;transform-origin:130px 435px;transform-box:view-box}
+.garden-stage .garden-flower:nth-child(2n) .lily-sway{animation-delay:4.2s}
+.garden-stage .garden-flower .lily-bloom{animation:none;opacity:1;transform:none}
+.growing-stem{stroke-dasharray:1;stroke-dashoffset:1;animation:stem-ascend 2.6s linear forwards}
+.growing-leaf{opacity:0;transform-box:view-box;transform:scale(.02);animation:leaf-unfurl .95s var(--leaf-delay) cubic-bezier(.2,.65,.25,1) forwards}
+.garden-stage .lily-petal{opacity:0;transform-box:view-box;transform-origin:0px 0px;transform:scale(.06);animation:petal-unfurl 1.1s var(--petal-delay) cubic-bezier(.2,.65,.2,1) forwards}
+.growing-center{opacity:0;animation:center-awaken .75s 3.35s both}
+.growing-spark{opacity:0;filter:drop-shadow(0 0 5px #edc77c);animation:ember-ascend 2.75s linear both}
+.bloom-halo{opacity:0;transform-origin:0px 0px;transform-box:view-box;animation:bloom-shimmer 1.1s 2.65s ease-out both}
+@keyframes stem-ascend{to{stroke-dashoffset:0}}
+@keyframes leaf-unfurl{0%{opacity:0;transform:scale(.02)}30%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes petal-unfurl{0%{opacity:0;transform:scale(.06)}25%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes center-awaken{from{opacity:0}to{opacity:1}}
+@keyframes ember-ascend{0%{opacity:0}5%,88%{opacity:1}100%{opacity:0}}
+@keyframes bloom-shimmer{0%{opacity:0;transform:scale(.3)}20%{opacity:.7}100%{opacity:0;transform:scale(4)}}
+.atmosphere-paused .garden-stage .lily-sway{animation-play-state:paused}
+@media(max-width:700px){.garden-stage:not(.has-flowers) .garden-touch-hint{font-size:18px;max-width:240px}.garden-stage.has-flowers .garden-touch-hint{font-size:14px;top:24px}}
+@media(prefers-reduced-motion:reduce){.garden-stage .garden-flower .lily-sway,.growing-stem,.growing-leaf,.garden-stage .lily-petal,.growing-center{animation:none;opacity:1;transform:none;stroke-dashoffset:0}.growing-spark,.bloom-halo{display:none;animation:none}.garden-stage .garden-touch-hint{transition:none}}
